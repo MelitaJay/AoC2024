@@ -46,3 +46,36 @@ Your actual left and right lists contain many location IDs. What is the total di
 
 
 
+class ListDistance:
+
+    def __init__(cls):
+
+        file_1 = open("day_1/input_1.txt", "r")
+        file_2 = open("day_1/input_2.txt", "r")
+
+        cls.list_1 = [int(x) for x in file_1.read().split("\n") if x]
+        cls.list_2 = [int(x) for x in file_2.read().split("\n") if x]
+
+    def run(self):
+
+        self.sort_lists()
+        return self.get_distance()
+
+    def sort_lists(self):
+
+        self.list_1.sort()
+        self.list_2.sort()
+
+    def get_distance(self):
+
+        total_distance = 0
+        for x in range(0, len(self.list_1)):
+            print(self.list_1[x], self.list_2[x])
+            total_distance += abs(self.list_1[x] - self.list_2[x])
+            print(total_distance)
+
+        return total_distance
+
+distance = ListDistance().run()
+
+# 2066446
